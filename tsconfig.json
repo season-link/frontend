@@ -5,7 +5,8 @@
     "baseUrl": ".",
     "paths": {
       "components/*": ["src/components/*"],
-      "common/*": ["src/common/*"]
+      "common/*": ["src/common/*"],
+      "config/*": ["src/config/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"]

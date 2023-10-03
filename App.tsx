@@ -1,17 +1,20 @@
 import { HelloWorld } from "components/HelloWorld";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
-import config from "./tamagui.config";
-import { TamaguiProvider } from "tamagui";
+import { PaperProvider } from "react-native-paper";
 
 export default function App() {
+  /**
+   * Note: If using redux, wrap it outside of the PaperProvider https://callstack.github.io/react-native-paper/docs/guides/getting-started
+   * To customize the theme, see https://callstack.github.io/react-native-paper/docs/guides/getting-started#customization
+   */
   return (
-    <TamaguiProvider config={config}>
+    <PaperProvider>
       <View style={styles.container}>
         <HelloWorld />
         <StatusBar style="auto" />
       </View>
-    </TamaguiProvider>
+    </PaperProvider>
   );
 }
 
