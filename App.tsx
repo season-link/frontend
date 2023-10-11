@@ -1,6 +1,5 @@
-import { HelloWorld } from 'components/HelloWorld';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
+
 import { PaperProvider } from 'react-native-paper';
 import { NativeRouter, Route, Routes } from 'react-router-native';
 import ChatPage from 'src/pages/chat';
@@ -14,15 +13,16 @@ import OnboardingPage from 'src/pages/profile-onboarding';
 import ScorePage from 'src/pages/profile-score';
 import SettingsPage from 'src/pages/profile-settings';
 import SignUpPage from 'src/pages/sign-up';
+import { DefaultRootStyle } from 'src/styles/default-style';
 
 export default function App() {
   return (
     <PaperProvider>
       <NativeRouter>
-        <View style={styles.container}>
-          <StatusBar style='auto' />
+        <View style={DefaultRootStyle.container}>
+          {/* <StatusBar style='auto' /> */}
           <Routes>
-            <Route path='/' Component={HelloWorld} />
+            <Route path='/' Component={LoginPage} />
             <Route path='/login' Component={LoginPage} />
             <Route path='/sign-up' Component={SignUpPage} />
             <Route path='/email-sent' Component={EmailSentPage} />
@@ -40,12 +40,3 @@ export default function App() {
     </PaperProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
