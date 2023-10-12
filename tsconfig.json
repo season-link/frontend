@@ -6,7 +6,10 @@
     "paths": {
       "components/*": ["src/components/*"],
       "common/*": ["src/common/*"],
-      "config/*": ["src/config/*"]
+      "config/*": ["src/config/*"],
+      "pages/*": ["src/pages/*"],
+      "models/*": ["src/models/*"],
+      "store/*": ["src/store/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"]

@@ -1,0 +1,135 @@
+{
+  "job_offers": [
+    {
+      "id": "1",
+      "jobId": "12345",
+      "from": "2023-10-10T09:00:00Z",
+      "to": "2023-10-10T17:00:00Z",
+      "currencyCountryId": 1,
+      "hourlySalary": 20,
+      "hoursPerWeek": 40,
+      "description": "Software Developer",
+      "address": "123 Main St, Anytown, USA",
+      "companyId": "1"
+    },
+    {
+      "id": "2",
+      "jobId": "67890",
+      "from": "2023-10-15T08:30:00Z",
+      "to": "2023-10-15T16:30:00Z",
+      "currencyCountryId": 2,
+      "hourlySalary": 18,
+      "hoursPerWeek": 35,
+      "description": "Graphic Designer",
+      "address": "456 Elm St, Anycity, USA",
+      "companyId": "2"
+    },
+    {
+      "id": "3",
+      "jobId": "54321",
+      "from": "2023-10-20T10:00:00Z",
+      "to": "2023-10-20T18:00:00Z",
+      "currencyCountryId": 3,
+      "hourlySalary": 22,
+      "hoursPerWeek": 45,
+      "description": "Marketing Manager",
+      "address": "789 Oak St, Anyvillage, USA",
+      "companyId": "3"
+    },
+    {
+      "id": "4",
+      "jobId": "98765",
+      "from": "2023-10-25T09:30:00Z",
+      "to": "2023-10-25T17:30:00Z",
+      "currencyCountryId": 4,
+      "hourlySalary": 25,
+      "hoursPerWeek": 38,
+      "description": "Sales Representative",
+      "address": "101 Pine St, Anysuburb, USA",
+      "companyId": "4"
+    },
+    {
+      "id": "5",
+      "jobId": "24680",
+      "from": "2023-10-30T11:00:00Z",
+      "to": "2023-10-30T19:00:00Z",
+      "currencyCountryId": 5,
+      "hourlySalary": 23,
+      "hoursPerWeek": 42,
+      "description": "Customer Support Specialist",
+      "address": "202 Cedar St, Anyhamlet, USA",
+      "companyId": "5"
+    }
+  ],
+  "companies": [
+    {
+      "id": "1",
+      "name": "ABC Company"
+    },
+    {
+      "id": "2",
+      "name": "XYZ Corporation"
+    },
+    {
+      "id": "3",
+      "name": "EFG Inc."
+    },
+    {
+      "id": "4",
+      "name": "LMN Enterprises"
+    },
+    {
+      "id": "5",
+      "name": "PQR Co."
+    }
+  ],
+  "jobs": [
+    {
+      "id": "12345",
+      "title": "Software Developer",
+      "jobCategoryId": "1"
+    },
+    {
+      "id": "67890",
+      "title": "Graphic Designer",
+      "jobCategoryId": "2"
+    },
+    {
+      "id": "54321",
+      "title": "Marketing Manager",
+      "jobCategoryId": "3"
+    },
+    {
+      "id": "98765",
+      "title": "Sales Representative",
+      "jobCategoryId": "4"
+    },
+    {
+      "id": "24680",
+      "title": "Customer Support Specialist",
+      "jobCategoryId": "5"
+    }
+  ],
+  "job_categories": [
+    {
+      "id": "1",
+      "name": "Category 1"
+    },
+    {
+      "id": "2",
+      "name": "Category 2"
+    },
+    {
+      "id": "3",
+      "name": "Category 3"
+    },
+    {
+      "id": "4",
+      "name": "Category 4"
+    },
+    {
+      "id": "5",
+      "name": "Category 5"
+    }
+  ]
+}
