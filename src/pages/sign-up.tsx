@@ -29,7 +29,7 @@ const SignUpPage = () => {
             ToastAndroid.SHORT
           );
 
-          navigate('/on');
+          navigate('/onboarding');
         }}
       >
         {(props) => {

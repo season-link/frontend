@@ -22,7 +22,7 @@ export default function App() {
         <View style={DefaultRootStyle.container}>
           {/* <StatusBar style='auto' /> */}
           <Routes>
-            <Route path='/' Component={LoginPage} />
+            <Route path='/' Component={OnboardingPage} />
             <Route path='/login' Component={LoginPage} />
             <Route path='/sign-up' Component={SignUpPage} />
             <Route path='/email-sent' Component={EmailSentPage} />
