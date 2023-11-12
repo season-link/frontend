@@ -8,9 +8,11 @@ import {
   useAuthRequest,
   useAutoDiscovery,
 } from 'expo-auth-session';
-import useStore from 'hooks/store/useStore';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from 'store/store';
+import { setAuth } from 'store/auth/authSlice';
 
 enum AuthorizationState {
   PENDING = 'PENDING',
@@ -47,7 +49,8 @@ const kcUrl = `${config.kc.baseUrl}/realms/${config.kc.realm}`;
  * @returns UseAuthorizationWorkflowResult
  */
 export default function useAuthorizationWorkflow(): UseAuthorizationWorkflowResult {
-  const { auth, setAuth } = useStore();
+  const auth = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -132,10 +135,12 @@ export default function useAuthorizationWorkflow(): UseAuthorizationWorkflowResu
       discovery
     )
       .then((response) => {
-        setAuth({
-          accessToken: response.accessToken,
-          refreshToken: response.refreshToken as string,
-        });
+        dispatch(
+          setAuth({
+            accessToken: response.accessToken,
+            refreshToken: response.refreshToken as string,
+          })
+        );
         navigate('/');
         setHookResult({
           state: AuthorizationState.SUCCESS,

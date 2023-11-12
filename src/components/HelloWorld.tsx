@@ -1,10 +1,13 @@
-import useStore from 'hooks/store/useStore';
 import { View } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 import { emptyTokens } from 'src/utils/tokens';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from 'store/store';
+import { setAuth } from 'store/auth/authSlice';
 export function HelloWorld() {
-  const { user, auth, setAuth } = useStore();
+  const user = useSelector((state: RootState) => state.user);
+  const auth = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
 
   return (
     <View>
@@ -19,10 +22,12 @@ export function HelloWorld() {
       <Button
         disabled={!auth.accessToken}
         onPress={() => {
-          setAuth({
-            accessToken: null,
-            refreshToken: null,
-          });
+          dispatch(
+            setAuth({
+              accessToken: null,
+              refreshToken: null,
+            })
+          );
           emptyTokens();
         }}
       >

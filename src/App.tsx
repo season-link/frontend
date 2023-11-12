@@ -18,10 +18,13 @@ import useTokenRefresher from 'hooks/auth/useTokenRefresher';
 import { useEffect, useState } from 'react';
 import AuthService from 'services/auth.service';
 import { emptyTokens } from './utils/tokens';
-import useStore from 'hooks/store/useStore';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from 'store/store';
+import { emptyAuth, setAuth } from 'store/auth/authSlice';
 
 export default function App() {
-  const { auth, setAuth } = useStore();
+  const auth = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -41,16 +44,13 @@ export default function App() {
             accessToken: auth.accessToken.substring(0, 10) + '...',
             refreshToken: auth.refreshToken.substring(0, 10) + '...',
           });
-          setAuth(auth);
+          dispatch(setAuth(auth));
         } else {
           console.log('No auth found');
         }
       } catch (error) {
         console.error(error);
-        setAuth({
-          accessToken: null,
-          refreshToken: null,
-        });
+        dispatch(emptyAuth());
         await emptyTokens();
       }
     }

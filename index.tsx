@@ -4,6 +4,8 @@ import { decode, encode } from 'base-64';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import App from 'src/App';
 import { NativeRouter } from 'react-router-native';
+import { store } from 'store/store';
+import { Provider } from 'react-redux';
 
 if (!global.btoa) {
   global.btoa = encode;
@@ -18,11 +20,13 @@ function Index() {
 
   return (
     <QueryClientProvider client={queryClient} contextSharing={true}>
-      <PaperProvider>
-        <NativeRouter>
-          <App />
-        </NativeRouter>
-      </PaperProvider>
+      <Provider store={store}>
+        <PaperProvider>
+          <NativeRouter>
+            <App />
+          </NativeRouter>
+        </PaperProvider>
+      </Provider>
     </QueryClientProvider>
   );
 }

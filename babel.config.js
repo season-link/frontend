@@ -17,6 +17,7 @@ module.exports = function (api) {
             config: './src/config',
             services: './src/services',
             hooks: './src/hooks',
+            store: './src/store',
           },
         },
       ],

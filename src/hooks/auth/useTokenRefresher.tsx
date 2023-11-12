@@ -1,13 +1,16 @@
-import useStore from 'hooks/store/useStore';
 import { UseQueryResult, useQuery } from 'react-query';
 import AuthService, { RefreshAccessTokenResponse } from 'services/auth.service';
 import { emptyTokens, storeTokens } from 'src/utils/tokens';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from 'store/store';
+import { setAuth } from 'store/auth/authSlice';
 
 export default function useTokenRefresher(): UseQueryResult<
   RefreshAccessTokenResponse | undefined,
   unknown
 > {
-  const { auth, setAuth } = useStore();
+  const auth = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
 
   /**
    * Refresh the access token every 4 minutes.
@@ -34,11 +37,13 @@ export default function useTokenRefresher(): UseQueryResult<
       onSuccess: async (refreshedAuth) => {
         if (!refreshedAuth) return;
 
-        setAuth({
-          ...auth,
-          accessToken: refreshedAuth.accessToken,
-          refreshToken: refreshedAuth.refreshToken,
-        });
+        dispatch(
+          setAuth({
+            ...auth,
+            accessToken: refreshedAuth.accessToken,
+            refreshToken: refreshedAuth.refreshToken,
+          })
+        );
 
         await storeTokens(
           refreshedAuth.accessToken,
@@ -47,11 +52,13 @@ export default function useTokenRefresher(): UseQueryResult<
       },
       onError: async (error) => {
         console.error(error);
-        setAuth({
-          ...auth,
-          accessToken: null,
-          refreshToken: null,
-        });
+        dispatch(
+          setAuth({
+            ...auth,
+            accessToken: null,
+            refreshToken: null,
+          })
+        );
 
         await emptyTokens();
       },
